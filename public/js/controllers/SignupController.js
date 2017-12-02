@@ -17,18 +17,19 @@ angular.module('healthlink', [], function($interpolateProvider) {
 		$scope.loader = true;
 		$scope.error = false;
 
-		$scope.signin_card = true;
-		$scope.verification = true;
-		$http.post("/api/signin/domain", data)
+		$http.post("/api/signin/account", data)
 		.then(function(response) {
-			if(response.data == 'undefined'){
+			if(response.data == 'Invalid Login Credentials.'){
+				swal("Oooops!", response.data, "error");
 				console.log(response.data)
 				$scope.loader = false;
 				$scope.error = true;
-				$scope.data.domain = null;
+				$scope.data = null;
 			}else{
-				console.log('success')
-				window.location.reload();
+				console.log(response.data)
+				
+				$scope.signin_card = true;
+				$scope.verification = true;
 			}
 		});
 	}

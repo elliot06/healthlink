@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Hootlex\Friendships\Traits\Friendable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-
-class Patient extends Model
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract; 
+class Patient extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
+    use Authenticatable;
+    use CanResetPassword;
     use Friendable;
     use SoftDeletes;
     use Notifiable;

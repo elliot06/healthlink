@@ -178,6 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+        'JD\Cloudder\CloudderServiceProvider'
     ],
 
     /*
@@ -227,6 +229,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Cloudder' => 'JD\Cloudder\Facades\Cloudder',
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 
 ];
