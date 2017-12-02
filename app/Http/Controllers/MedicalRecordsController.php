@@ -17,8 +17,8 @@ use App\Models\RecordImage;
 use App\Models\Tags;
 use JD\Cloudder\Facades\Cloudder;
 
-use HealthChain\Http\Requests;
-use HealthChain\Http\Controllers\ActivityLogController;
+use App\Http\Requests;
+use App\Http\Controllers\ActivityLogController;
 
 class MedicalRecordsController extends Controller
 {
@@ -91,6 +91,17 @@ class MedicalRecordsController extends Controller
 
 		return redirect()->back()->with('success', 'New record was added to your vault.');
 
+	}
+
+	public function getRecord($id='')
+	{
+		$record = MedicalRecords::with('imgs')->find($id);
+
+		if(isset($record) && $record->patient_id == Auth::user()->id){
+			return view('patients.record_data')->with('record', $record);
+		}else{
+			return view('patients.record_data')->with('error', 'You don\'t have the permission to view this page.');
+		}
 	}
 
 	// public function editRecord(Request $request)

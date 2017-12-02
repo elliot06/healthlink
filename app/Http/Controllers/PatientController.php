@@ -94,7 +94,7 @@ public function getToken()
 		return view('patients.dashboard')->with([
 			'requests' => $requests,
 			'friends' => $friends,
-			'MedicalRecords' => $MedicalRecords,
+			'records' => $MedicalRecords,
 			'tags' => $tags,
 			'overview' => $overview
 		]);

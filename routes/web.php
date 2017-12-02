@@ -34,7 +34,17 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 	Route::get('/patient/dashboard','PatientController@index');
 	Route::get('/patient/records','MedicalRecordsController@index');
-
+	
+	Route::get('/patient/signout', 'LoginController@signout');
+	Route::post('/patient/sharable/data', 'PatientController@getSharable');
+	Route::get('/patient/activity', 'PatientController@getLogs');
+	Route::get('/patient/health/circle', 'CircleController@index');
+	Route::get('/patient/accept/circle/{id}', 'CircleController@acceptCircle');
+	Route::get('/patient/deny/circle/{id}', 'CircleController@denyCircle');
+	Route::get('/patient/records', 'MedicalRecordsController@index');
+	Route::get('/patient/record/{id}', 'MedicalRecordsController@getRecord');
+	Route::post('/patient/submit/record', 'MedicalRecordsController@saveRecord');
+	Route::get('/patient/get/circle/record/{id}', 'CircleController@getCircleRecord');
 });
 
 
@@ -53,7 +63,7 @@ Route::group(['middleware' => ['api'],'prefix' => 'api'], function() {
 	Route::post('/save/key', 'PatientController@addSharableKey');
 	Route::get('/search/{username}', 'CircleController@searchCircle');
 	Route::post('/add/circle', 'CircleController@addCircle');
-	Route::get('/get/record/{id}', 'RecordsController@getData');
-	Route::post('/edit/record', 'RecordsController@editRecord');
+	Route::get('/get/record/{id}', 'MedicalRecordsController@getData');
+	Route::post('/edit/record', 'MedicalRecordsController@editRecord');
 	Route::get('/notifications', 'PatientController@getNotifications');
 });

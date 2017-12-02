@@ -14,9 +14,8 @@
 		@if(Session::has('success'))
 		<div class="row">
 			<div class="col s12 m12">
-				<div class="card-panel teal">
-					<span class="white-text">I am a very simple card. I am good at containing small bits of information.
-						I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+				<div class="card-panel green">
+					<span class="white-text">{{ Session::get('success') }}
 					</span>
 				</div>
 			</div>
@@ -43,8 +42,8 @@
 							<div class="card">
 								<div class="card-image">
 									<img style="height: 350px" src="{{ $record->img_url }}">
-									<span class="card-title truncate" style="background-color: #000; width: 100%; opacity: 0.6">{{ $record->title }}</span>
-									<a ng-click="getData({{ $record->id }})" class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">visibility</i></a>
+									<span class="card-title truncate" style="background-color: #000; width: 100%; opacity: 0.6"><a href="{{ url('patient/record/'. $record->id) }}">{{ $record->title }}</a></span>
+									<a ng-click="getData({{ $record->id }})" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">share</i></a>
 								</div>
 								<div class="card-content">
 									<p class="truncate">
@@ -108,7 +107,9 @@
 			</p>
 			
 			<p ng-hide="edit"><b>Content:</b> << data.content >></p>
-			<a href="<< img.img_url >>" data-lightbox="image-1" data-title="<< data.title >>" ng-repeat="img in data.imgs" style="margin: 10px;"><img src="<< img.img_url >>"  style="width: 220px; height: 250px; padding: 10px; border: 1px solid #000"></a>
+			<div ng-repeat="img in data.imgs">
+				<img src="<< img.img_url >>" class="materialboxed" style="width: 220px; height: 250px; padding: 10px; border: 1px solid #000">
+			</div>
 			
 		</div>
 		<div class="modal-footer">
@@ -126,7 +127,7 @@
 			<p class="black-text">You can add your records to your vault. </p>
 
 			<br>
-			<form action="{{ url('submit/record') }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ url('patient/submit/record') }}" method="POST" enctype="multipart/form-data">
 				<div class="input-field"> 
 					<div class="form-group">
 						<label class="control-label" for="">Record Title</label>
@@ -148,14 +149,14 @@
 
 				<div class="file-field input-field">
 					<div class="btn">
-						<span>File</span>
+						<span>IMAGES</span>
 						<input type="file" name="files[]" multiple>
 					</div>
 					<div class="file-path-wrapper">
-						<input class="file-path validate" type="text" placeholder="Upload one or more files">
+						<input class="file-path validate" type="text" placeholder="Upload one or more images">
 					</div>
 				</div>
-				
+				{{ csrf_field() }}
 				<button type="submit" class="btn waves-effect waves-light right"><i class="material-icons right">send</i>Add to Vault</button>
 				<br>
 			</form>

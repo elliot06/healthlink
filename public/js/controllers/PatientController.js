@@ -117,7 +117,6 @@ angular.module('healthlink', ['ngSanitize'], function($interpolateProvider) {
 			url: '/api/get/record/' + data,
 		}).then(function successCallback(response) {
 			$scope.data = response.data
-alert(0)
 			$('#dataView').modal('open');
 			// console.log(response.data)
 

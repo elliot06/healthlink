@@ -20,8 +20,13 @@ class MedicalRecords extends Model
 		return $this->belongsTo('App\Models\Patient', 'patient_id');
     }
 
-    public function notifcations()
+    public function imgs()
 	{
 		return $this->hasMany('App\Models\RecordImage','record_id','id');
+    }
+
+    public function tags()
+    {
+        return $this->hasMany('App\Models\Tags','record_id','id');
     }
 }

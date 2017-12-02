@@ -36,5 +36,5 @@
 		});
 	}
 
-	setInterval(deleteExpiredKey, 3000);
+	// setInterval(deleteExpiredKey, 3000);
 </script>

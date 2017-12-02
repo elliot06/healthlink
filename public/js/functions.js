@@ -55,10 +55,10 @@ window.onload = function() {
 };
 
 $(document).ready(function(){
-	$('.stepper').activateStepper();
+	// $('.stepper').activateStepper();
 	$(".button-collapse").sideNav();
 	$('.modal').modal();
-
+	$('.materialboxed').materialbox();
 	$('.chips').material_chip();
 	$('.chips-initial').material_chip({
 		data: [{
@@ -87,7 +87,7 @@ $(document).ready(function(){
 
 	$('.chips').keyup(function () {
 		var data= $('#tag').material_chip('data');
-		console.log(data);
+		// console.log(data);
 
 		var myTags = ''; 
 
