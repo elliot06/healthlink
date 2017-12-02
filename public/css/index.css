@@ -1,0 +1,169 @@
+
+canvas{
+	display:block;
+	vertical-align:bottom;
+}
+.container-black
+{
+	background: #000;
+	background-color: #000;
+}
+
+.count-particles{
+	background: #fff;
+	position: absolute;
+	top: 48px;
+	left: 0;
+	width: 80px;
+	color: #13E8E9;
+	font-size: .8em;
+	text-align: left;
+	text-indent: 4px;
+	line-height: 14px;
+	padding-bottom: 2px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+}
+
+.js-count-particles{
+	font-size: 1.1em;
+}
+
+#stats,
+.count-particles{
+	-webkit-user-select: none;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+#stats{
+	border-radius: 3px 3px 0 0;
+	overflow: hidden;
+}
+
+.count-particles{
+	border-radius: 0 0 3px 3px;
+}
+
+
+/* ---- particles.js container ---- */
+
+#particles-js{
+	width: 100%;
+	height: 100vh;
+	background-image: url('../img/cubes.png');
+	background-position: 50% 50%;
+	z-index: -2;
+	position: absolute;
+}
+
+.mask{
+	background-color: #000;
+	opacity: 0.5;
+}
+
+.transparent{
+	background-color: transparent !important;
+}
+nav{
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2); */;
+	box-shadow: 0 0px 0px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2);
+}
+
+.first-page, .second-page, .third-page{
+	height: 100vh;
+}
+
+.second-page{
+	background-color: teal;
+	padding-top: 60px;
+}
+
+.third-page{
+	background-color: #fff;
+	padding-top: 60px;
+}
+
+.second-page .container .row {
+	padding-top: 3%;
+}
+
+.content-center{
+	padding-top: 20%;
+}
+
+@media only screen and (max-width: 500px) {
+
+}
+
+*{
+	font-family: 'Raleway', sans-serif;
+}
+
+.navbar-login{
+	width: 90%;
+	background-color: transparent;
+	border: 3px solid #4db6ac;
+	color: #000000;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2) !important;
+	box-shadow: 0 0px 0px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2) !important;
+}
+
+.navbar-login:hover{
+	color: #ffffff !important;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2) !important;
+	box-shadow: 0 0px 0px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2) !important;
+}
+
+.navbar-login-doctor{
+	width: 90%;
+	background-color: transparent;
+	border: 3px solid #000;
+	color: #000000;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2) !important;
+	box-shadow: 0 0px 0px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2) !important;
+}
+
+.navbar-login-doctor:hover{
+	color: #ffffff !important;
+	background-color: #000;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2) !important;
+	box-shadow: 0 0px 0px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.2) !important;
+}
+
+.followUs, .support{
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.korra-sub{
+	font-family: 'Poiret One', cursive;
+}
+
+/* Color of invalid field */
+.has-error .control-label,
+.has-error .help-block,
+.has-error .form-control-feedback {
+	color: #a94442 !important;
+}
+
+/* Color of valid field */
+.has-success .control-label,
+.has-success .help-block,
+.has-success .form-control-feedback {
+	color: #3c763d;
+}
+
+@media only screen and (max-width: 500px) {
+	.gridmenu {
+		width:100%;
+	}
+
+	.gridmain {
+		width:100%;
+	}
+
+	.gridright {
+		width:100%;
+	}
+}
