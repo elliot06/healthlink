@@ -179,6 +179,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+        'JD\Cloudder\CloudderServiceProvider'
     ],
 
     /*
@@ -230,6 +232,8 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
+        'Cloudder' => 'JD\Cloudder\Facades\Cloudder',
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 
 ];

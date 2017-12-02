@@ -55,6 +55,47 @@ window.onload = function() {
 };
 
 $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
+	$('.stepper').activateStepper();
+	$(".button-collapse").sideNav();
+	$('.modal').modal();
+
+	$('.chips').material_chip();
+	$('.chips-initial').material_chip({
+		data: [{
+			tag: 'Apple',
+		}, {
+			tag: 'Microsoft',
+		}, {
+			tag: 'Google',
+		}],
+	});
+	$('.chips-placeholder').material_chip({
+		placeholder: 'Enter a tag',
+		secondaryPlaceholder: '+Tag',
+	});
+	$('.chips-autocomplete').material_chip({
+		autocompleteOptions: {
+			data: {
+				'Apple': null,
+				'Microsoft': null,
+				'Google': null
+			},
+			limit: Infinity,
+			minLength: 1
+		}
+	});
+
+	$('.chips').keyup(function () {
+		var data= $('#tag').material_chip('data');
+		console.log(data);
+
+		var myTags = ''; 
+
+		for (var i = 0; i< data.length; i++) {
+			myTags += '<input type="hidden" value="' + data[i].tag + '" name="tags[]">';
+			$('#tags').html(myTags);
+		}
+	});
+
 });
+

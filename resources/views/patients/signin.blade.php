@@ -1,29 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.noauth')
 @section("title", "Sign In")
 @section('content')
 <main ng-controller="signin">
 	<div id="particles-js"></div>
 	<div class="signin-page">
 		<div class="container animated zoomIn" style="padding-top: 4%">
-			@if(Session::has('disabled'))
-			<div class="card red darken-1">
-				<div class="card-content white-text">
-					<span class="card-title"></span>
-					<p><i class="material-icons left">warning</i>{{ Session::get('disabled') }}</p>
-				</div>
-			</div>
-			@endif
 			<div class="section"></div>
-			<div class="section"></div>
-			<div class="row" ng-show="error">
-				<div class="col s12 m8 offset-m2 l6 offset-l3">
-					<div class="card-panel red darken-3">
-						<span class="white-text">
-							<i class="material-icons left">warning</i> We couldn’t find your domain address. If you can’t remember your domain’s address, we can send you a reminder.
-						</span>
-					</div>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col s12 m8 offset-m2 l6 offset-l3">
 					<div class="card large white darken-1" style="height: auto;" ng-hide="signin_card">
@@ -116,13 +98,13 @@
 							<h5 class="center"><b>We've sent you a verification code to<br> confirm your login attempt.</b></h5>
 							<h6>Enter the code that was sent to your email.</h6>
 							<br><br>
-							<form action="" method="POST">
+							<form action="{{ url('/verify/code') }}" method="POST">
 								<div class="col s12 m8 offset-m2 l8 offset-l2">
 									<div class="input-field"> 
 										<div class="form-group">
 											<label class="control-label" for="">Code</label>
 											<span class="help-block"></span>
-											<input type="text" class="form-control" ng-model="data.code" placeholder="XXXXXXXX">
+											<input type="text" class="form-control" ng-model="data.code" name="code" placeholder="XXXXXXXXXX">
 										</div>
 									</div>
 								</div>
