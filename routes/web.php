@@ -78,7 +78,6 @@ Route::group(['middleware' => ['api'],'prefix' => 'api'], function() {
 
 	Route::get('/key', 'APIPatientController@getKey');
 	Route::post('/logs', 'ActivityLogController@getLogs');
-	Route::post('/data', 'APIPatientController@getAllData');
 
 
 	//ANGULAR ROUTES

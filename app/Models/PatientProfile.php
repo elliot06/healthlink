@@ -18,4 +18,9 @@ class PatientProfile extends Model
 	{
 		return $this->belongsTo('App\Models\Patient', 'patient_id');
     }
+
+    public function full_name()
+    {
+        return ucfirst($this->first_name) . ' ' . ucfirst($this->middle_name) . ' ' . ucfirst($this->last_name);;
+    }
 }

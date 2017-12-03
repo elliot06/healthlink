@@ -20,13 +20,6 @@ class CreateHmoAccredicationsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        Schema::create('accredication_patient', function (Blueprint $table) {
-            $table->integer('accredication_id');
-            $table->integer('patient_id');
-            $table->primary(['accredication_id', 'patient_id']);
-            $table->timestamps();
-            $table->softDeletes();
-        });
     }
 
     /**

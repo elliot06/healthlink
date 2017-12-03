@@ -11,7 +11,9 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract; 
 
-class Patient extends Model implements AuthenticatableContract, CanResetPasswordContract
+use Tymon\JWTAuth\Contracts\JWTSubject;
+
+class Patient extends Model implements AuthenticatableContract, CanResetPasswordContract, JWTSubject
 {
     use Authenticatable;
     use CanResetPassword;

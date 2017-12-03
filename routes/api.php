@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
 Route::post('register', 'APIPatientController@register');
@@ -22,5 +22,9 @@ Route::post('login', 'APIPatientController@login');
 // Route::post('recover', 'AuthController@recover');
 
 Route::group(['middleware' => ['jwt.auth']], function() {
-    Route::get('logout', 'APIPatientController@logout');
+	Route::get('logout', 'APIPatientController@logout');
+	Route::get('getAll', 'APIPatientController@getAllData');
+	Route::post('/save/key', 'APIPatientController@addSharableKey');
+	Route::post('/sharable/data', 'APIPatientController@getSharable');
+	Route::post('/key', 'APIPatientController@getKey');
 });
