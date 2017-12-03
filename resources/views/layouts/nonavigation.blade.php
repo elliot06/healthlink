@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('css/hover.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/materialize-stepper.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
 
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -22,12 +23,12 @@
   <script type="text/javascript" src="{{ asset('js/angular.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/controllers/SignupController.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+  @yield('controller')
 
 </head>
 
 <body ng-app="healthlink">
 
-  @include('includes.signinnavigation')
   @yield('content')
   @include('includes.footer')
 </body>

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title> @yield('title') | HealthLink</title>
+  <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified CSS -->
@@ -11,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('css/hover.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/materialize-stepper.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
 
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -35,11 +37,12 @@
   @include('includes.navigation')
   @yield('content')
 
+  @if(Auth::check())
   <!-- Modal Structure -->
   <div id="generateKey" class="modal" ng-controller="dashboard">
     <div class="modal-content">
       <h4>Generate A Key </h4>
-      <p>The key that will be generated here will be used to unlock your data permanently. This key is disposable. You can set when the key will be destroyed.</p>
+      <p>The key that will be generated here will be used to unlock your data not permanently. This key is disposable. You can set when the key will be destroyed.</p>
 
       <br>
       <div class="input-field"> 
@@ -108,32 +111,11 @@
       <h4>Upgrade My Cirlce</h4>
       <p>Please specify the number of people you want to add in your circle. Remember these are there slot in your list. No names yet are required.</p>
 
-      <form action="" method="POST">
-        <div class="row">
-          <div class="input-field col s12 m3 l3"> 
-            <div class="form-group">
-              <label class="control-label" for="">Number of Slots</label>
-              <span class="help-block"></span>
-              <input type="number" class="form-control" name="slot" ng-model="slot" placeholder="Number of Slots" required="">
-            </div>
-          </div>
-          <div class="input-field col s12 m3 l3"> 
-            <div class="form-group">
-              <p>X Php. 500.00 = <span ng-show="slot"><b> << slot * 500 | currency : 'Php. ' >></b></span></p>
-            </div>
-          </div>
-          <input type="hidden" name="amount" value="<< slot * 500 >>">
-        </div>
-      </div>
-      <div class="modal-footer">
-        {{ csrf_field() }}
-        <button type="submit" class="waves-effect waves-green btn teal">Proceed to Payment</button>
-      </div>
-    </form>
-
+      <h1>Coming Soon</h1>
+    </div>
   </div>
-
+  @endif
   @include('includes.footer')
-  
+
 </body>
 </html>

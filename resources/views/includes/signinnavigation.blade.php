@@ -5,8 +5,8 @@
 			<ul class="right hide-on-med-and-down">
 				<li><a class="black-text" data-scroll href="{{ url('/') }}#howItWorks">How-it-Works</a></li>
 				<li><a class="black-text" data-scroll href="{{ url('/') }}#whyHealthLink">Why HealthLink?</a></li>
-				<li><a href="{{ url('/signin') }}" class="waves-effect waves-light btn-large navbar-login">PATIENT</a></li>
-				<li><a href="{{ url('/signin') }}" class="waves-effect waves-light btn-large navbar-login-doctor">DOCTOR</a></li>
+				<li><a href="{{ url('/patient') }}" class="waves-effect waves-light btn-large navbar-login">PATIENT</a></li>
+				<li><a href="{{ url('/doctor') }}" class="waves-effect waves-light btn-large navbar-login-doctor">DOCTOR</a></li>
 			</ul>
 		</div>
 	</nav>

@@ -67,14 +67,14 @@ class PatientLoginController extends Controller
 	public function verifyCode(Request $request)
 	{
 		if($request['code'] == Session::get('code')){
+			Session::forget('code');
 			return redirect('/patient/dashboard');
 		}else{
+			Session::forget('code');
 			Auth::logout();
-			return redirect('/');
+			return redirect('/patient')->with('error', 'The code that you entered did not match the one that was sent to you.');
 		}
 	}
-
-	
 
 	public function changePassword(Request $request)
 	{

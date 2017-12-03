@@ -109,14 +109,14 @@ angular.module('healthlink', ['ngSanitize'], function($interpolateProvider) {
 .controller('records', function ($rootScope, $scope, $http, $timeout) {
 	$scope.loading = false;
 
-	$scope.getData = function(data){
-		$scope.loading = true;
+	$scope.shareRecord = function(data){
 		// console.log(data)
 		$http({
 			method: 'GET',
 			url: '/api/get/record/' + data,
 		}).then(function successCallback(response) {
-			$scope.data = response.data
+			$scope.record = response.data.record
+			$scope.key = response.data.key.original.key
 			$('#dataView').modal('open');
 			// console.log(response.data)
 
@@ -140,6 +140,33 @@ angular.module('healthlink', ['ngSanitize'], function($interpolateProvider) {
 			// $('#dataView').modal('close');
 			// console.log(response.data)
 
+		}, function errorCallback(response) {
+			Materialize.toast('There was an error while processing the request.', 4000) 
+		});
+
+	}
+
+	$scope.submitKey = function(data, id, key){
+		// console.log(key);
+		$scope.loading = true;
+		data.record_id = id;
+		data.key = key;
+		$http({
+			method: 'POST',
+			url: '/api/save/key',
+			data: data
+		}).then(function successCallback(response) {
+			$scope.loading = false;
+			if(response.data.result == 'Key is still valid.'){
+				Materialize.toast($scope.data.email + ' has still a valid private key to use.', 4000) 
+			}else{
+				Materialize.toast('Private Key was sent to ' + $scope.data.email + '.', 4000) 
+				Materialize.toast('Private Key was saved.', 4000) 
+				$('#generateKey').modal('close');
+				$scope.data = '';
+			}
+			$('#dataView').modal('close');
+			
 		}, function errorCallback(response) {
 			Materialize.toast('There was an error while processing the request.', 4000) 
 		});

@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract; 
 
-class Doctor extends Model
+class Doctor extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use SoftDeletes;
+    use Authenticatable;
+    use CanResetPassword;
 
     protected $dates = ['deleted_at'];
 

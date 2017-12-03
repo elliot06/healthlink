@@ -25,7 +25,7 @@ use Session;
 
 class PatientController extends Controller
 {
-public function getToken()
+	public function getToken()
 	{
 		return hash_hmac('sha256', env('APP_KEY'), 40);
 	}
@@ -50,8 +50,6 @@ public function getToken()
 				$dta = Patient::find($friend->sender_id);
 				array_push($requests, $dta);
 			}
-
-
 		}
 		
 		if(count($user->getFriends()) > 0){
@@ -60,7 +58,7 @@ public function getToken()
 				array_push($friends, $dta);
 			}
 		}
-		$tagg = Tags::select('name')->distinct()->get();
+		$tagg = Tags::select('name')->where('patient_id', Auth::user()->id)->distinct()->get();
 
 		$tagCount = array ();
 		$tagLabel = array ();
@@ -109,10 +107,17 @@ public function getToken()
 			$user = Patient::find($request['id']);
 		}
 
-		$unused = SharableKey::where('recipient_mail', $request['email'])->where('patient_id', $user->id)->first();
+		if(isset($request['record_id'])){
+			$exist = SharableKey::where('recipient_mail', $request['email'])->where('record_id', $request['record_id'])->where('patient_id', $user->id)->first();
+			if($exist){
+				return response()->json(['result' => 'Key is still valid.']);
+			}
+		}else{
+			$unused = SharableKey::where('recipient_mail', $request['email'])->where('patient_id', $user->id)->first();
 
-		if($unused){
-			return response()->json(['result' => 'Key is still valid.']);
+			if($unused){
+				return response()->json(['result' => 'Key is still valid.']);
+			}
 		}
 
 		$dta = $request->all();
@@ -146,6 +151,7 @@ public function getToken()
 		$SharableKey->recipient_name = $dta['assignee'];
 		$SharableKey->recipient_mail = $dta['email'];
 		$SharableKey->private_key = $dta['key'];
+		$SharableKey->record_id = isset($request['record_id']) ? $request['record_id']:null;
 		$SharableKey->delete_on = Carbon::now()->addHour($duration);
 		$SharableKey->created_at = Carbon::now();
 		$SharableKey->save();
@@ -208,6 +214,6 @@ public function getToken()
 	{
 		$logs = ActivityLog::where('patient_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
-		return view('patient.logs')->with('activities', $logs);
+		return view('patients.logs')->with('activities', $logs);
 	}
 }

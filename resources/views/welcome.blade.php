@@ -1,5 +1,5 @@
-
 @extends('layouts.master')
+@section('title', 'Home')
 @section('content')
 <div id="particles-js"></div>
 
@@ -23,16 +23,18 @@
         <div class="row">
             <div class="col s12 m6 offset-m3 l6 offset-l3">
                 <div class="card-panel red">
-                    <span class="white-text">{{ Session::get('errors') }}
-                    </span>
+                    @foreach($errors->all() as $error)
+                    <span class="white-text">{{ $error }}
+                    </span><br>
+                    @endforeach
                 </div>
             </div>
         </div>
         @endif
         <div class="row center valign-wrapper">
             <div class="col s12 m6 offset-m3 l6 offset-l3">
-                <button type="button" class="btn waves-effect waves-light btn-large wow fadeIn pulse" data-wow-delay=".7s">GET STARTED AS PATIENT</button>
-                <button type="button" class="btn waves-effect waves-light btn-large wow black fadeIn" data-wow-delay=".7s">GET STARTED AS DOCTOR</button>
+                <a class="modal-trigger" href="#patient"><button type="button" class="btn waves-effect waves-light btn-large wow fadeIn pulse" data-wow-delay=".7s">GET STARTED AS PATIENT</button></a>
+                <a class="modal-trigger" href="#doctor"><button type="button" class="btn waves-effect waves-light btn-large wow black fadeIn" data-wow-delay=".7s">GET STARTED AS DOCTOR</button></a>
             </div>
         </div>
     </div>
@@ -47,7 +49,7 @@
         </div>
 
         <hr class="wow fadeIn" data-wow-delay=".5s">
-        <br>
+        <br><br>
         <div class="row">
             <div class="col s12 m6 l6 center wow fadeIn" data-wow-delay=".7s">
                 <div class="col s12 m6 l6 center">
@@ -68,6 +70,7 @@
                 </div>
             </div>
         </div>
+        <br><br>
         <div class="row">
             <div class="col s12 m6 l6 center wow fadeIn" data-wow-delay="1.1s">
                 <div class="col s12 m6 l6 center">
@@ -117,6 +120,78 @@
     </div>
 </div>
 
+
+<!-- Modal Structure -->
+<div id="patient" class="modal">
+    <div class="modal-content center">
+        <h4>Create a FREE Patient Account</h4>
+        <p>Please provide the necessary details</p>
+
+        <div class="row">
+            <form action="{{ url('new/patient') }}" method="POST" class="col s12 m6 offset-m3 l6 offset-l3">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" type="text" name="name" class="validate">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="username" type="email" name="email" class="validate">
+                        <label for="username">Email Address</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="password" name="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="password" name="password_confirmation" class="validate">
+                        <label for="password">Re-type Password</label>
+                    </div>
+                </div>
+                {{ csrf_field() }}
+                <button type="submit" class="btn waves-effect waves-light btn-large" style="width: 100%">GET STARTED</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Close</a>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="doctor" class="modal">
+    <div class="modal-content center">
+        <h4>Create a FREE Doctor Account</h4>
+        <p>Please provide the necessary details</p>
+
+        <div class="row">
+            <form action="{{ url('new/doctor') }}" method="POST" class="col s12 m6 offset-m3 l6 offset-l3">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" type="text" name="name" class="validate">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="username" type="email" name="email" class="validate">
+                        <label for="username">Email Address</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="password" name="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="password" name="password_confirmation" class="validate">
+                        <label for="password">Re-type Password</label>
+                    </div>
+                </div>
+                {{ csrf_field() }}
+                <button type="submit" class="btn waves-effect waves-light btn-large" style="width: 100%">GET STARTED</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Close</a>
+    </div>
+</div>
 @endsection
 
 

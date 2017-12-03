@@ -54,10 +54,57 @@ window.onload = function() {
 	document.body.appendChild(css);
 };
 
+
+$(function () {
+
+	$('#auto-region.autocomplete').autocomplete({
+		data: {
+			"NIR - Negros Island Region" : null,
+			"NCR - National Capital Region": null,
+			"CAR - Cordillera Administrative Region": null,
+			"REGION I - Ilocos": null,
+			"REGION II - Cagayan Valley": null,
+			"REGION III -Central Luzon": null,
+			"REGION IV-A - CALABARZON": null,
+			"REGION IV-B - MIMAROPA": null,
+			"REGION V - Bicol": null,
+			"REGION VI - Western Visayas": null,
+			"REGION VII -Centra Visayas": null,
+			"REGION VIII - Eastern Visayas": null,
+			"REGION IX - Zamboanga Peninsula": null,
+			"REGION X - Northern Mindanao": null,
+			"REGION XI - Davao": null,
+			"REGION XII - Soccsksargen": null,
+			"REGION XIII - Caraga": null,
+			"ARMM - Autonomous Region in Muslim Mindanao": null,
+		},
+		limit: 5,
+		onAutoComplete: function(val) {
+
+		},
+		minLength: 1,
+	});
+});
+
+
 $(document).ready(function(){
-	// $('.stepper').activateStepper();
+	$('.stepper').activateStepper();
+	$('.stepper').activateStepper({
+      linearStepsNavigation: true, //allow navigation by clicking on the next and previous steps on linear steppers
+      autoFocusInput: true, //since 2.1.1, stepper can auto focus on first input of each step
+      autoFormCreation: true, //control the auto generation of a form around the stepper (in case you want to disable it)
+      showFeedbackLoader: true //set if a loading screen will appear while feedbacks functions are running
+  });
+	$(".button-collapse").sideNav();
+	$('select').material_select();
+	<!-- please add this to document.ready-->
+	$('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 120 // Creates a dropdown of 15 years to control year
+            });
 	$(".button-collapse").sideNav();
 	$('.modal').modal();
+	$('select').material_select();
 	$('.materialboxed').materialbox();
 	$('.chips').material_chip();
 	$('.chips-initial').material_chip({

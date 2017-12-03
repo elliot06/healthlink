@@ -51,11 +51,47 @@ class DatabaseSeeder extends Seeder
                     'blood_type' => 'Cong',
                 ]
             );
+
+            PatientProfile::create(
+                [   
+                    'patient_id' => 2,
+                    'first_name' => 'Cong',
+                    'middle_name' => 'Cong',
+                    'last_name' => 'Cong',
+                    'home_contact' => 'Cong',
+                    'cell_contact' => 'Cong',
+                    'gender' => 'Cong',
+                    'age' => 2,
+                    'birthdate' => 'Cong',
+                    'citizenship' => 'Cong',
+                    'height' => 2,
+                    'weight' => 2,
+                    'bmi' => 2,
+                    'bmi_category' => 'Cong',
+                    'blood_type' => 'Cong',
+                ]
+            );
         }
         if (!DB::table('patient_addresses')->count()) {
             PatientAddress::create(
                 [   
                     'patient_id' => 1,
+                    'perma_address' => 'Cong',
+                    'perma_city' => 'Cong',
+                    'perma_province' => 'Cong',
+                    'perma_region' => 'Cong',
+                    'perma_postal' => 'Cong',
+                    'pres_address' => 'Cong',
+                    'pres_city' => 'Cong',
+                    'pres_province' => 'Cong',
+                    'pres_region' => 'Cong',
+                    'pres_postal' => 'Cong',
+                ]
+            );
+
+            PatientAddress::create(
+                [   
+                    'patient_id' => 2,
                     'perma_address' => 'Cong',
                     'perma_city' => 'Cong',
                     'perma_province' => 'Cong',
@@ -86,6 +122,32 @@ class DatabaseSeeder extends Seeder
             PatientFamily::create(
                 [   
                     'patient_id' => 1,
+                    'first_name' => 'Test',
+                    'middle_name' => 'Test',
+                    'last_name' => 'Test',
+                    'contact' => 'Test',
+                    'citizenship' => 'Test',
+                    'email' => 'Test',
+                    'occupation' => 'Test',
+                    'relationship' => 'Test'
+                ]
+            );
+            PatientFamily::create(
+                [   
+                    'patient_id' => 2,
+                    'first_name' => 'Test',
+                    'middle_name' => 'Test',
+                    'last_name' => 'Test',
+                    'contact' => 'Test',
+                    'citizenship' => 'Test',
+                    'email' => 'Test',
+                    'occupation' => 'Test',
+                    'relationship' => 'Test'
+                ]
+            );
+            PatientFamily::create(
+                [   
+                    'patient_id' => 2,
                     'first_name' => 'Test',
                     'middle_name' => 'Test',
                     'last_name' => 'Test',

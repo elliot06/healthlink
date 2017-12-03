@@ -43,7 +43,7 @@
 								<div class="card-image">
 									<img style="height: 350px" src="{{ $record->img_url }}">
 									<span class="card-title truncate" style="background-color: #000; width: 100%; opacity: 0.6"><a href="{{ url('patient/record/'. $record->id) }}">{{ $record->title }}</a></span>
-									<a ng-click="getData({{ $record->id }})" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">share</i></a>
+									<a ng-click="shareRecord({{ $record->id }})" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">share</i></a>
 								</div>
 								<div class="card-content">
 									<p class="truncate">
@@ -85,31 +85,64 @@
 	<!-- Modal Structure -->
 	<div id="dataView" class="modal">
 		<div class="modal-content">
-			<h4 ng-hide="edit"><< data.title >></h4>
-			<input type="hidden" ng-model="data.id" value="<< data.id >>">
-			<div class="input-field" ng-show="edit"> 
+			<h4>Share this Specific Record </h4>
+			<p>The key that will be generated here will be used to unlock your data not permanently. This key is disposable. You can set when the key will be destroyed.</p>
+
+			<p><b>Record Title:</b> << record.title  | uppercase>></p>
+			<br>
+
+			<div class="input-field"> 
 				<div class="form-group">
-					<label class="control-label" for="">Title</label>
-					<span class="help-block"></span>
-					<input type="text" class="form-control" id="" ng-model="data.title" value="<< data.title >>" placeholder="Title">
+					<label class="control-label" for="">Assignee</label>
+					<input type="text" ng-model="data.assignee" class="form-control" id="" placeholder="Assignee">
 				</div>
 			</div>
-			<div class="input-field" ng-show="edit">
-				<textarea id="textarea1" class="materialize-textarea" ng-model="data.content" placeholder="Content"><< data.content >></textarea>
-				<label for="textarea1">Content</label>
+			<div class="input-field"> 
+				<div class="form-group">
+					<label class="control-label" for="">Recipient Email</label>
+					<input type="email" ng-model="data.email" class="form-control" id="" placeholder="Recipient Email">
+				</div>
 			</div>
 
-			<p><b>Timestamp:</b> << data.created_at >>
-				<small class="right">
-					<input type="checkbox" id="edit" ng-model="edit"/>
-					<label for="edit">Edit Mode</label>
-				</small>
+			<p>
+				Set Key Expiration: The default would be 8 hours before the key expires.
+				<input name="group1" type="radio" ng-model="data.duration" value="8" id="8" checked="" />
+				<label for="8">8 Hours</label>
+				&nbsp;
+				<input name="group1" type="radio" ng-model="data.duration" value="48" id="1" />
+				<label for="1">1 Day</label>
+				&nbsp;
+				<input name="group1" type="radio" ng-model="data.duration" value="72" id="3" />
+				<label for="3">3 Days</label>
 			</p>
-			
-			<p ng-hide="edit"><b>Content:</b> << data.content >></p>
-			<div ng-repeat="img in data.imgs">
-				<img src="<< img.img_url >>" class="materialboxed" style="width: 220px; height: 250px; padding: 10px; border: 1px solid #000">
+
+			<div class="progress" ng-show="loading">
+				<div class="indeterminate"></div>
 			</div>
+			<p>
+				<input type="checkbox" id="show" ng-model="show" />
+				<label for="show">Show Key</label>
+			</p>
+			<div class="input-field" ng-hide="show"> 
+				<div class="form-group">
+					<label class="control-label" for="">Private Key</label>
+					<span class="help-block"></span>
+					<input type="password" ng-model="data.key" ng-value="key" placeholder="Private Key" class="form-control" disabled="">
+				</div>
+			</div>
+
+
+			<div class="input-field" ng-show="show"> 
+				<div class="form-group">
+					<label class="control-label" for="">Private Key</label>
+					<span class="help-block"></span>
+					<input type="text" ng-model="data.key" ng-value="key" placeholder="Private Key" class="form-control" disabled="">
+				</div>
+			</div>
+
+			<button ng-click="submitKey(data, record.id, key)" class="btn right" ng-disabled="!data.assignee || !data.email">Send and Save</button>
+			<br>
+
 			
 		</div>
 		<div class="modal-footer">

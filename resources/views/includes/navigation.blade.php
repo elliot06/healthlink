@@ -3,7 +3,7 @@
   <!-- <li><a href="#!">Profile</a></li> -->
   <!-- <li><a href="http://korra.dev/account/settings">Settings</a></li> -->
   <li class="divider"></li>
-  <li><a href="{{ url('/signout') }}">Log Out</a></li>
+  <li><a href="{{ url('patient/signout') }}">Log Out</a></li>
 </ul>
 
 <div class="navbar-fixed" ng-controller="navigation">
@@ -24,18 +24,33 @@
           <a href="#!email"><span class="white-text email">{{ Auth::user()->email }}</span></a>
         </div></li>
         <li><a class="modal-trigger" href="#generateKey"><i class="material-icons">vpn_key</i>Generate Key</a></li>
-        <li><a href="{{ url('health/circle') }}"><i class="material-icons">group</i>Health Circle <span class="new red badge right" ng-show="notif"><< notif.length >></span></a></li>
+        <li><a href="{{ url('patient/health/circle') }}"><i class="material-icons">group</i>Health Circle <span class="new red badge right" ng-show="notif"><< notif.length >></span></a></li>
         <li><a href="{{ url('patient/records') }}"><i class="material-icons">list</i>My Vault</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Others</a></li>
         <li><a class="modal-trigger" href="#upgradeCircle"><i class="material-icons">add_circle</i>Upgrade Circle <span class="new red badge right" ng-show="notif"><< notif.length >></span></a></li>
-        <li><a class="waves-effect" href="{{ url('/activity') }}"><i class="material-icons">assignment</i> Activity Log</a></li>
+        <li><a class="waves-effect" href="{{ url('patient/activity') }}"><i class="material-icons">assignment</i> Activity Log</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
 </div>
 
+@elseif(Auth::guard('doctor')->check())
+
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper black">
+      <ul class="right hide-on-med-and-down">
+        <li><a ><i class="material-icons left">vpn_key</i> {{ Session::has('key') ? Session::get('key'):'' }}</a></li>
+        <li><a href="{{ url('doctor/dashboard') }}" ><i class="material-icons left">account_circle</i> {{ Auth::guard('doctor')->user()->email }}</a></li>
+        <li><a href="{{ url('doctor/signout') }}">Log Out</a></li>
+      </ul>
+      
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+</div>
 @else
 <div class="navbar navbar-fixed ">
 	<nav class="white wow fadeIn" data-wow-delay=".4s">
@@ -44,8 +59,8 @@
 			<ul class="right hide-on-med-and-down">
 				<li><a class="black-text" data-scroll href="#howItWorks">How-it-Works</a></li>
 				<li><a class="black-text" data-scroll href="#whyHealthLink">Why HealthLink?</a></li>
-				<li><a href="{{ url('/signin') }}" class="waves-effect waves-light btn-large navbar-login">PATIENT</a></li>
-				<li><a href="{{ url('/signin') }}" class="waves-effect waves-light btn-large navbar-login-doctor">DOCTOR</a></li>
+				<li><a href="{{ url('/patient') }}" class="waves-effect waves-light btn-large navbar-login">PATIENT</a></li>
+				<li><a href="{{ url('/doctor') }}" class="waves-effect waves-light btn-large navbar-login-doctor">DOCTOR</a></li>
 			</ul>
 		</div>
 	</nav>

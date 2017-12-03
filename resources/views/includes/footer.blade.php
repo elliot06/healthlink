@@ -3,6 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 
 @if(!Auth::check())
 <script src="{{ asset('js/particles.js') }}"></script>
@@ -12,6 +13,7 @@
 <script src="{{ asset('js/mdb.min.js') }}"></script>
 @endif
 <script src="{{ asset('js/functions.js') }}"></script>
+<script src="{{ asset('js/materialize-stepper.min.js') }}"></script>
 
 {!! Charts::scripts() !!}
 @yield('scripts')

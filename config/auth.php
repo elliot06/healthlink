@@ -47,11 +47,11 @@ return [
         ],
         'doctor' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'doctor',
         ],
         'doctor-api' => [
             'driver' => 'token',
-            'provider' => 'admins',
+            'provider' => 'doctor',
         ],
     ],
 

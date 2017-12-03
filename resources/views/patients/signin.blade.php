@@ -7,11 +7,19 @@
 		<div class="container animated zoomIn" style="padding-top: 4%">
 			<div class="section"></div>
 			<div class="row">
+				@if(Session::has('error'))
+				<div class="col s12 m8 offset-m2 l6 offset-l3">
+					<div class="card-panel red">
+						<span class="white-text">{{ Session::get('error') }}
+						</span>
+					</div>
+				</div>
+				@endif
 				<div class="col s12 m8 offset-m2 l6 offset-l3">
 					<div class="card large white darken-1" style="height: auto;" ng-hide="signin_card">
 						<div class="card-content black-text center">
 							<a href="{{ url('/') }}"><h1 class="title black-text">HealthLink</h1></a>
-							<h4 class="center"><b>Sign in to your account</b></h4>
+							<h4 class="center"><b>Patient account</b></h4>
 							<h6>Enter your credentials</h6>
 							<br><br>
 							<div class="col s12 m8 offset-m2 l8 offset-l2">

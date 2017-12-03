@@ -12,7 +12,6 @@
 					<div class="row">
 						<div class="col col s12 m8 l8" >
 							<h3>{{ Auth::user()->profile->last_name }}, {{ Auth::user()->profile->first_name }} {{ Auth::user()->profile->middle_name }}, <small>{{ Auth::user()->profile->age }}</small></h3>
-							<b>User Patient Code: </b> {{ Auth::user()->patient_code }}
 						</div>
 						<div class="col col s12 m4 l4" ><br>
 							<p><b>Height: </b> {{ Auth::user()->profile->height }} m &nbsp; <b>Weight: </b> {{ Auth::user()->profile->weight }} kg</p>
@@ -81,7 +80,7 @@
 							@foreach($friends as $friend)
 							<li class="collection-item avatar black-text">
 								<img src="{{ $friend->avatar}}" alt="" class="circle">
-								<span class="title">{{ $friend->patientName->last_name}}, {{ $friend->patientName->first_name}}</span>
+								<span class="title">{{ $friend->profile->last_name}}, {{ $friend->profile->first_name}}</span>
 								<p>@ {{ $friend->name }}
 								</p>
 							</li>

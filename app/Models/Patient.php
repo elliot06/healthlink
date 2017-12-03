@@ -10,6 +10,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract; 
+
 class Patient extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable;
@@ -17,6 +18,26 @@ class Patient extends Model implements AuthenticatableContract, CanResetPassword
     use Friendable;
     use SoftDeletes;
     use Notifiable;
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     protected $dates = ['deleted_at'];
 
