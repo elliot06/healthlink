@@ -5,6 +5,7 @@ use App\Models\Patient;
 use App\Models\PatientAddress;
 use App\Models\PatientFamily;
 use App\Models\PatientProfile;
+use App\Models\Doctor;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,8 +19,8 @@ class DatabaseSeeder extends Seeder
         if (!DB::table('patients')->count()) {
             Patient::create(
                 [   
-                    'name' => 'Cong',
-                    'email' => 'microbiologist@gmail.com',
+                    'name' => 'Jerameel',
+                    'email' => 'jerameel@gmail.com',
                     'password' => Hash::make('123456')
                 ]
             );
@@ -30,25 +31,32 @@ class DatabaseSeeder extends Seeder
                     'password' => Hash::make('123456')
                 ]
             );
+            Doctor::create(
+                [   
+                    'name' => 'Test',
+                    'email' => 'doctor@gmail.com',
+                    'password' => Hash::make('123456')
+                ]
+            );
         }
         if (!DB::table('patient_profiles')->count()) {
             PatientProfile::create(
                 [   
                     'patient_id' => 1,
-                    'first_name' => 'Cong',
-                    'middle_name' => 'Cong',
-                    'last_name' => 'Cong',
-                    'home_contact' => 'Cong',
-                    'cell_contact' => 'Cong',
-                    'gender' => 'Cong',
-                    'age' => 1,
-                    'birthdate' => 'Cong',
-                    'citizenship' => 'Cong',
-                    'height' => 1,
-                    'weight' => 1,
-                    'bmi' => 1,
-                    'bmi_category' => 'Cong',
-                    'blood_type' => 'Cong',
+                    'first_name' => 'Jerameel',
+                    'middle_name' => 'D',
+                    'last_name' => 'Delos Reyes',
+                    'home_contact' => '000-0000',
+                    'cell_contact' => '0909090909',
+                    'gender' => 'Male',
+                    'age' => 21,
+                    'birthdate' => '10/17/1995',
+                    'citizenship' => 'Filipino',
+                    'height' => 173,
+                    'weight' => 65,
+                    'bmi' => 67,
+                    'bmi_category' => 'Normal',
+                    'blood_type' => 'A',
                 ]
             );
         }

@@ -23,4 +23,8 @@ Route::post('login', 'APIPatientController@login');
 
 Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('logout', 'APIPatientController@logout');
+    Route::get('getAll', 'APIPatientController@getAllData');
+    Route::post('/save/key', 'APIPatientController@addSharableKey');
+    Route::post('/sharable/data', 'APIPatientController@getSharable');
+    Route::post('/key', 'APIPatientController@getKey');
 });
