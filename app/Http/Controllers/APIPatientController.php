@@ -201,10 +201,12 @@ class APIPatientController extends Controller
 			$duration = 8;
 		}else{
 			$duration = $dta['duration'];
-		}
+        }
+        
+        $key_value = $this->getKey();
 
 		$content = [
-			'key'=> $this->getKey(), 
+			'key'=> $key_value, 
 			'name'=> $request->name,
 			'sender'=> $patient->profile->first_name.' '.$patient->profile->last_name,
 			'duration'=> $duration,
@@ -223,7 +225,7 @@ class APIPatientController extends Controller
 		$SharableKey->patient_id = $patient->id;
 		$SharableKey->recipient_name = $request->name;
 		$SharableKey->recipient_mail = $request->email;
-		$SharableKey->private_key = $dta['key'];
+		$SharableKey->private_key = $key_value;
 		$SharableKey->delete_on = Carbon::now()->addHour($duration);
 		$SharableKey->created_at = Carbon::now();
 		$SharableKey->save();
